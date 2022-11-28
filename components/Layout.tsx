@@ -11,7 +11,7 @@ const Layout = (props: Props) => {
         <>
             <Head>
                 <title>
-                    {`Calcify${` - ${props.title}` || ''}`}
+                    {`Calcify${props.title ? ` - ${props.title}` : ''}`}
                 </title>
             </Head>
             <main className={`h-full ${montserrat.variable} font-sans`}>
