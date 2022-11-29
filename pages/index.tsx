@@ -6,6 +6,7 @@ import Latex from "react-latex-next";
 import {MouseEventHandler, useMemo, useState} from "react";
 import {parseLaTeX} from "../utils/calculatorUtils";
 import { v4 } from 'uuid';
+import TextBox from "../components/TextBox";
 
 type Button = {
     buttonLabel: string,
@@ -75,12 +76,12 @@ export default function Home() {
                     setCurrentArg(parseLaTeX(currentArg))
                     break;
                 }
-                case 'tan': {
-
+                case 'x^2': {
+                    appendArg('^2');
+                    break;
                 }
-                case 'sin': {
-
-                }
+                case 'tan':
+                case 'sin':
                 case 'cos': {
                     appendArg(`${button.buttonLabel.replaceAll('$', '')}(`)
                     break;
@@ -110,7 +111,7 @@ export default function Home() {
             <p className='text-center font-bold text-8xl laptop2:text-6xl mb-6 text-white drop-shadow-lg'>Calcify!</p>
             {/*Calculator*/}
             <div className='w-1/2 bg-neutral-100 mx-auto rounded-lg bg-opacity-70 backdrop-blur-xl'>
-                <div className='h-48 p-6 relative rounded-lg bg-pink-300 text-5xl text-white font-bold overflow-hidden overflow-ellipsis'>
+                <div className='h-48 relative rounded-lg bg-pink-300 text-5xl text-white font-bold overflow-hidden overflow-ellipsis'>
                     <div className='absolute right-10 bottom-10'>
                         <Latex>{`$ ${currentArg ? currentArg.replaceAll('$', '') : ''}$`}</Latex>
                     </div>
