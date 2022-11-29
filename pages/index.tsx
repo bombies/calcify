@@ -72,8 +72,7 @@ export default function Home() {
                     break;
                 }
                 case '=': {
-                    console.log(currentArg.replaceAll('$', ''))
-                    parseLaTeX(currentArg)
+                    setCurrentArg(parseLaTeX(currentArg))
                     break;
                 }
                 case 'tan': {
@@ -113,7 +112,7 @@ export default function Home() {
             <div className='w-1/2 bg-neutral-100 mx-auto rounded-lg bg-opacity-70 backdrop-blur-xl'>
                 <div className='h-48 p-6 relative rounded-lg bg-pink-300 text-5xl text-white font-bold overflow-hidden overflow-ellipsis'>
                     <div className='absolute right-10 bottom-10'>
-                        <Latex>{`$ ${currentArg.replaceAll('$', '')}$`}</Latex>
+                        <Latex>{`$ ${currentArg ? currentArg.replaceAll('$', '') : ''}$`}</Latex>
                     </div>
                 </div>
                 <div className='grid grid-cols-5 gap-y-2 gap-x-1 py-6 px-3 h-full'>

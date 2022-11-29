@@ -7,6 +7,10 @@ const parseLaTeXToReadableString = (LaTeX: string) => {
 }
 
 export const parseLaTeX = (LaTeX: string) => {
-    console.log(evaluate(parseLaTeXToReadableString(LaTeX)));
+    try {
+        return evaluate(parseLaTeXToReadableString(LaTeX)).toString();
+    } catch (ex: any) {
+        return ex.toString()
+    }
 }
 
